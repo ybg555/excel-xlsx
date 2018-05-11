@@ -6,7 +6,8 @@
   "keywords": [
     "excel",
     "xlsx",
-    "download"
+    "download",
+    "export"
   ],
   "scripts": {
     "test": "eslint ."
