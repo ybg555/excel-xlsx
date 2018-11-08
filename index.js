@@ -1,15 +1,15 @@
-const XLSX = require('xlsx');
+var XLSX = require('xlsx');
 
-const excelHandle = {
+var excelHandle = {
   _convert(num) {
     return num <= 26 ? String.fromCharCode(num + 64) : excelHandle._convert(parseInt((num - 1) / 26)) + excelHandle._convert(num % 26 || 26);
   },
   handleDownload(headList, list, excelName) {
-    const headersLetters = {};
-    const sheetData = {};
+    var headersLetters = {};
+    var sheetData = {};
 
     headList.forEach((head, index) => {
-      const colLetter = excelHandle._convert(index + 1);
+      var colLetter = excelHandle._convert(index + 1);
       headersLetters[ head.prop ] = colLetter;
       sheetData[ colLetter + '1' ] = {
         v: head.label
@@ -20,8 +20,8 @@ const excelHandle = {
     });
 
     list.forEach((item, index) => {
-      const newIndex = index + 2;
-      const headersLettersKeys = Object.keys(headersLetters);
+      var newIndex = index + 2;
+      var headersLettersKeys = Object.keys(headersLetters);
       headersLettersKeys.forEach((key, keyIndex) => {
         sheetData[ headersLetters[ key ] + '' + newIndex ] = {
           v: item[ key ] || '-'
@@ -32,7 +32,7 @@ const excelHandle = {
       });
     });
 
-    const wb = {
+    var wb = {
       SheetNames: [ 'sheet1' ],
       Sheets: {
         sheet1: sheetData

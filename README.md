@@ -30,9 +30,8 @@ npm install excel-xlsx --save
 ```js
 const EXPORT_XLSX = require('excel-xlsx');
 
-const headerData = [{label: '日期', prop: 'time'}, ...];
-const listData = [{time: '2018', ...}, ...];
-
+const headerData = [ { label: '日期', prop: 'time' }, { label: '金额', prop: 'money' } ];
+const listData = [ { time: '2018', money: '234.21' }, { time: '2019', money: '1234.21' } ];
 EXPORT_XLSX(headerData, listData, 'tableName');
 ```
 
